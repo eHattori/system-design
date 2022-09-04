@@ -23,8 +23,8 @@ To create a new product execute a POST in our API:
 
 ```json
 {
-	description: string,
-	value: float
+   description: "string",
+   value: "float"
 }
 ```
 Execute the below command to create with *201* status:
