@@ -1,0 +1,16 @@
+ syntax = "proto3";
+
+ package tax;
+
+ service Tax {
+    rpc GetCalculatedPrice(Product) returns (CalculatedTax);
+ }
+
+ message Product{
+  float price = 1;
+ }
+
+ message CalculatedTax{
+   float price = 1;
+   float tax = 2;
+ }
