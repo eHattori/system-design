@@ -56,6 +56,8 @@ Returns 200 status:
 
 ##  High Level Design
 
+![image](https://user-images.githubusercontent.com/2198233/188327644-87d47124-5e28-4a1e-b097-a5eb3d804473.png)
+
 
 * **Client** using a brower, mobile, or any device to access to application
 * **DNS** translate a domain name to an IP address
