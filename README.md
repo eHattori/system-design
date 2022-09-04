@@ -10,7 +10,7 @@ The service needs to envolve from serving a small amount of requests to millions
 Its a POC that you can test it in your development enviroment.
 To init the application you need to have a docker and docker-compose installed in your computer.
 
-```
+```console
 docker-compose up -d
 ```
 
@@ -29,13 +29,13 @@ To create a new product execute a POST in our API:
 ```
 Execute the below command to create with *201* status:
 
-```
+```console
 curl -X POST -H "Content-Type: application/json" -d '{ "description": "Prod", "value": 10.0}' http://localhost/products
 ```
 
 ### Get all Products
 Route only available to get all:
-```
+```console
 curl -X GET http://localhost/products
 ```
 
