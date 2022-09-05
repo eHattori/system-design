@@ -19,7 +19,7 @@ With the all containers running you can call the request to use the application:
 ### Create a Product
 To create a new product execute a POST in our API:
 
-****Schema****
+**Schema**
 
 ```json
 {
