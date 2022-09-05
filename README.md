@@ -30,7 +30,7 @@ To create a new product execute a POST in our API:
 Execute the below command to create with *201* status:
 
 ```console
-curl -X POST -H "Content-Type: application/json" -d '{ "description": "Prod", "value": 10.0}' http://localhost/products
+curl -X POST -H "Content-Type: application/json" -d '{ "description": "Awesome Product", "value": 10.0}' http://localhost/products
 ```
 
 ### Get all Products

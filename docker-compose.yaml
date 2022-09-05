@@ -9,6 +9,10 @@ services:
     depends_on:
       - product_read
       - product_write
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
   postgres:
     image: postgres:12.4 
     environment:
@@ -53,6 +57,31 @@ services:
       - postgres
       - redis
       - tax
+  comments_write_async:
+    environment:
+      REDIS_URI: "redis://redis:6379"
+    image: "python:3.8.1"
+    ports: 
+      - "3002:5000"
+    volumes:
+      - ./comments:/app 
+    working_dir: /app
+    command: ./bootstrap.sh
+    depends_on:
+      - redis
+      - mongo
+  comments_worker:
+    environment:
+      REDIS_URI: "redis://redis:6379"
+      MONGO_URI: "mongodb://mongo:27017"
+    image: "python:3.8.1"
+    volumes:
+      - ./comments:/app 
+    working_dir: /app
+    command: ./bootstrap_worker.sh
+    depends_on:
+      - redis
+      - mongo
   tax:
     image: "python:3.8.1"
     ports: 

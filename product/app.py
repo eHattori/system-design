@@ -5,15 +5,9 @@ import json
 
 app = create_app()
 
-class PayloadPost:
-    def __init__(self, **entries):
-        self.__dict__.update(entries)
-
-
 @app.route('/products')
 def get():
     return {"products": Product.get_all()}, 200
-
 
 @app.route('/products', methods=['POST'])
 def post():
