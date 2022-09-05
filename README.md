@@ -19,7 +19,7 @@ With the all containers running you can call the request to use the application:
 ### Create a Product
 To create a new product execute a POST in our API:
 
-### Schema
+****Schema****
 
 ```json
 {
@@ -53,6 +53,23 @@ Returns 200 status:
   ]
 }
 ```
+### Create a Comment
+To create a new comment to product execute a POST in our API:
+
+****Schema****
+
+```json
+{
+  "comment": "string",
+  "author": "string",
+  "id_product": "int"
+}
+```
+Execute the below command to create with *201* status:
+
+```console
+curl -X POST -H "Content-Type: application/json" -d '{ "id_product": 1, "comment": "Hello!!!", "author": "Hattori" } ' http://localhost/comments
+```
 
 ##  High Level Design
 
@@ -64,5 +81,5 @@ Returns 200 status:
 * **Web Server** is a proxy that centralizes internal services and provides unifield inrterfaces
 * The Application Servers **Product_Write** and **Product_Read** handling the requets, with this separation we can scale both layers independently, the  **Product_Write** is reponsable for insert new data while  **Product_Read**  read all data from storage.
 * **Tax** is a small microservice responsable by calculate all tax to some product, as a internal service that use gRPC  to communicate with others.
-* The database choised was th Postgres and I'm using  Redis as cache and queue broker
-* **Comments_Write_Async** is a bach service that is responsable by create asynchronously Comments 
+* The database choised was th **Postgres** and I'm using  *Redis* as cache and queue broker
+* **Comments_Write_Async** is a bach service that is responsable by create asynchronously Comments, the client send request to async API than pubisher messase to Redis broker, the **Comments_Worker** receive message and process to save to No-SQL database(MongoDB) 
