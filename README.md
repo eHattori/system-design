@@ -80,6 +80,6 @@ curl -X POST -H "Content-Type: application/json" -d '{ "id_product": 1, "comment
 * **DNS** translate a domain name to an IP address
 * **Web Server** is a proxy that centralizes internal services and provides unifield inrterfaces
 * The Application Servers **Product_Write** and **Product_Read** handling the requets, with this separation we can scale both layers independently, the  **Product_Write** is reponsable for insert new data while  **Product_Read**  read all data from storage.
-* **Tax** is a small microservice responsable by calculate all tax to some product, as a internal service that use gRPC  to communicate with others.
-* The database choised was th **Postgres** and I'm using  *Redis* as cache and queue broker
+* **Tax** is a small microservice responsable by calculate all tax to some product, as a internal service that use over gRPC protocol to communicate with others.
+* The database choised was the **Postgres** and *Redis* as cache the Comments_Worker uses as queue broker too, in production enviroment it's not a good approach.
 * **Comments_Write_Async** is a bach service that is responsable by create asynchronously Comments, the client send request to async API than pubisher messase to Redis broker, the **Comments_Worker** receive message and process to save to No-SQL database(MongoDB) 
